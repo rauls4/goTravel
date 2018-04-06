@@ -31,13 +31,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         } else {
             print("Location services are not enabled")
         }
-
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let _ = locations.first {
-             self.getCoords(address: destinationAddress!)
-        }
     }
     
     func mapView(_ rendererFormapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -65,7 +58,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
 
     private func getCoords(address:String){
         let geoCoder = CLGeocoder()
@@ -120,6 +112,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.mapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 50, left: 50.0, bottom: 50.0, right: 50.0), animated: true)
             }
         }
-        
     }
 }
