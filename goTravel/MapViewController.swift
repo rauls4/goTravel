@@ -64,8 +64,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
 
     private func getCoords(address:String){
-        let a = CLGeocoder()
-        a.geocodeAddressString(address, completionHandler: {(placemarks, error) in
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(address, completionHandler: {(placemarks, error) in
             self.processResponse(withPlacemarks: placemarks, error: error)
         })
     }
