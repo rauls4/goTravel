@@ -23,10 +23,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate                                        = self
         mapView.showsUserLocation                               = true
         mapView.userTrackingMode = MKUserTrackingMode.follow
-        if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() != .denied
-        {
-            self.getCoords(address: destinationAddress!)
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                print("No access")
+            case .authorizedAlways, .authorizedWhenInUse:
+                self.getCoords(address: destinationAddress!)
+            }
+        } else {
+            print("Location services are not enabled")
         }
+
     }
     
     
