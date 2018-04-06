@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q6V-jL-YsC">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="goHome" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="weg-by-Nj1">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDp-qe-hML">
+                                        <rect key="frame" x="150" y="0.0" width="75" height="301.5"/>
+                                        <state key="normal" title="Go to work"/>
+                                        <connections>
+                                            <action selector="goToWork:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Chh-GP-RVP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lus-GT-f9f">
+                                        <rect key="frame" x="136" y="301.5" width="103" height="301.5"/>
+                                        <state key="normal" title="Go on vacation"/>
+                                        <connections>
+                                            <action selector="goOnVacation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tld-su-Bv7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="weg-by-Nj1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8f9-Cm-Hsy"/>
+                            <constraint firstItem="weg-by-Nj1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZAR-I5-Z8m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="weg-by-Nj1" secondAttribute="bottom" id="bVK-qR-i4r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="weg-by-Nj1" secondAttribute="trailing" id="cbH-Yg-trz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8cL-Hk-WH3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="658.92053973013503"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="0pl-eI-a0r">
+            <objects>
+                <viewController storyboardIdentifier="mapIdentifier" id="VJb-KL-jLe" customClass="MapViewController" customModule="goHome" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gqp-2l-AFs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fHl-B2-e7g">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hfU-7C-B88" firstAttribute="bottom" secondItem="fHl-B2-e7g" secondAttribute="bottom" id="0Xi-Xb-D6e"/>
+                            <constraint firstItem="hfU-7C-B88" firstAttribute="trailing" secondItem="fHl-B2-e7g" secondAttribute="trailing" id="5cL-lE-iah"/>
+                            <constraint firstItem="fHl-B2-e7g" firstAttribute="top" secondItem="hfU-7C-B88" secondAttribute="top" id="FaZ-VD-r69"/>
+                            <constraint firstItem="fHl-B2-e7g" firstAttribute="leading" secondItem="hfU-7C-B88" secondAttribute="leading" id="gde-q9-csf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hfU-7C-B88"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="fHl-B2-e7g" id="EQw-2b-G2o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cnK-Ks-L6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1608.8" y="658.92053973013503"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wnC-r0-hLk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q6V-jL-YsC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iVp-fo-7Lh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lK6-J6-IaL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u05-3b-gau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="234" y="659"/>
+        </scene>
+    </scenes>
+</document>
