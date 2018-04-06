@@ -9,6 +9,10 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    override func viewDidLoad() {
+       Manager.shared.locationManager.requestWhenInUseAuthorization()
+    }
 
     @IBAction func goToWork(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

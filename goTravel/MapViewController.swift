@@ -13,13 +13,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var destinationAddress:String?                      //Should be set by the calling view
     
-    private  var locationManager = CLLocationManager()  //Our instance if CLLocationManager
-    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.locationManager.requestWhenInUseAuthorization()
         mapView.delegate                                        = self
         mapView.showsUserLocation                               = true
         mapView.userTrackingMode = MKUserTrackingMode.follow
@@ -37,10 +34,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     }
     
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if((destinationAddress) != nil){
-            self.getCoords(address: destinationAddress!)
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let _ = locations.first {
+             self.getCoords(address: destinationAddress!)
         }
     }
     
@@ -78,9 +74,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         })
     }
     
-    
     private func getDirections(destination:CLLocationCoordinate2D){
-        let  origin = (locationManager.location?.coordinate)!           //Let's get where we are
+        let  origin = (Manager.shared.locationManager.location?.coordinate)!           //Let's get where we are
         //Let's get our placemarks
         let sourcePlacemark = MKPlacemark(coordinate: origin, addressDictionary: nil)
         let destinationPlacemark = MKPlacemark(coordinate: destination, addressDictionary: nil)
