@@ -23,6 +23,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate                                        = self
         mapView.showsUserLocation                               = true
         mapView.userTrackingMode = MKUserTrackingMode.follow
+        if CLLocationManager.locationServicesEnabled() && CLLocationManager.authorizationStatus() != .denied
+        {
+            self.getCoords(address: destinationAddress!)
+        }
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if((destinationAddress) != nil){
             self.getCoords(address: destinationAddress!)
         }
