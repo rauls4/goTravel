@@ -89,7 +89,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: false )
         
         //Let's calculate directions
-        let directionRequest = MKDirectionsRequest()
+        let directionRequest = MKDirections.Request()
         directionRequest.source = sourceMapItem
         directionRequest.destination = destinationMapItem
         directionRequest.transportType = .automobile
@@ -104,11 +104,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             let route = response.routes[0]
             //Display our route
-            self.mapView.add((route.polyline), level: MKOverlayLevel.aboveRoads)
+            self.mapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
             
             //Zoom out to show entire route
             if let first = self.mapView.overlays.first {
-                let rect = self.mapView.overlays.reduce(first.boundingMapRect, {MKMapRectUnion($0, $1.boundingMapRect)})
+                let rect = self.mapView.overlays.reduce(first.boundingMapRect, {$0.union($1.boundingMapRect)})
                 self.mapView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 50, left: 50.0, bottom: 50.0, right: 50.0), animated: true)
             }
         }
